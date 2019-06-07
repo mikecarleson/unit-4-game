@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./assets/style.css" />
+    <title>Crystal Collector</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="body">
+    <h1 class="header">Crystal Collector!</h1>
+
+    <div class="main-container">
+      <p>There are four crystals displayed as buttons on the page.</p>
+      <p>The player will be shown a random number at the start of the game.</p>
+      <p>
+        When the player clicks on a crystal, it will add a specific amount of
+        points to the player's total score.
+      </p>
+      <p>
+        The player wins if their total score matches the random number from the
+        beginning of the game.
+      </p>
+      <p>The player loses if their score goes above the random number.</p>
+      <p>Each time the game starts, the value of each crystal will change.</p>
+    </div>
+
+    <h3>Number to Guess: <span id="number-to-guess"></span></h3>
+    <h3>Current total: <span id="currentTotal"></span></h3>
+    <div class="score">
+      wins:<span id="wins"></span> losses:<span id="losses"></span>
+    </div>
+
+    <div class="crystals">
+      <div class="col">
+        <img
+          src="assets/images/crystal1.png"
+          class="crystal1"
+          width="200"
+          height="200"
+        />
+      </div>
+      <div class="col">
+        <img
+          src="assets/images/crystal2.png"
+          class="crystal2"
+          width="200"
+          height="200"
+        />
+      </div>
+      <div class="col">
+        <img
+          src="assets/images/crystal3.png"
+          class="crystal3"
+          width="200"
+          height="200"
+        />
+      </div>
+      <div class="col">
+        <img
+          src="assets/images/crystal4.png"
+          class="crystal4"
+          width="200"
+          height="200"
+        />
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        
+        var randomNumber = Math.floor(Math.random() * 120 + 19);
+        var wins = 0;
+        var losses = 0;
+        var total = 0;
+
+        $("#number-to-guess").text(randomNumber);
+
+        var num1 = Math.floor(Math.random() * 12 + 1);
+        var num2 = Math.floor(Math.random() * 12 + 1);
+        var num3 = Math.floor(Math.random() * 12 + 1);
+        var num4 = Math.floor(Math.random() * 12 + 1);
+
+        $(".crystal1").on("click", function() {
+          total = total + num1;
+          $("#currentTotal").text(total);
+          if (total == randomNumber) {
+            winGame();
+          } else if (total > randomNumber) {
+            loseGame();
+          }
+        });
+        $(".crystal2").on("click", function() {
+          total = total + num2;
+          $("#currentTotal").text(total);
+          if (total == randomNumber) {
+            winGame();
+          } else if (total > randomNumber) {
+            loseGame();
+          }
+        });
+        $(".crystal3").on("click", function() {
+          total = total + num3;
+          $("#currentTotal").text(total);
+
+          if (total == randomNumber) {
+            winGame();
+          } else if (total > randomNumber) {
+            loseGame();
+          }
+        });
+        $(".crystal4").on("click", function() {
+          total = total + num4;
+          $("#currentTotal").text(total);
+
+          if (total == randomNumber) {
+            winGame();
+          } else if (total > randomNumber) {
+            loseGame();
+          }
+        });
+
+        function winGame() {
+          alert("You win!");
+          wins++;
+          $("#wins").text(wins);
+          newGame();
+        }
+        function loseGame() {
+          alert("You lost!");
+          losses++;
+          $("#losses").text(losses);
+          newGame();
+        }
+
+
+        $("#wins").text(wins);
+        $("#losses").text(losses);
+
+        function newGame() {
+          randomNumber = Math.floor(Math.random() * 120 + 19);
+          $("#number-to-guess").text(randomNumber);
+          num1 = Math.floor(Math.random() * 12 + 1);
+          num2 = Math.floor(Math.random() * 12 + 1);
+          num3 = Math.floor(Math.random() * 12 + 1);
+          num4 = Math.floor(Math.random() * 12 + 1);
+          total = 0;
+          $("#currentTotal").text(total);
+        }
+      });
+
+    </script>
+  </body>
+</html>

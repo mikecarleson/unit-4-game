@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+}
+.body {
+  background: url(./cave.jpg);
+}
+h1 {
+  background: white;
+  border: 3px solid red;
+  margin: 10px;
+  width: 30%;
+}
+h3 {
+  background: white;
+  border: 3px solid red;
+  margin: 10px;
+  width: 15%;
+}
+.score {
+  background: white;
+  border: 3px solid red;
+  width: 15%;
+}
+
+.main-container {
+  background: red;
+  border: 3px solid white;
+  width: 40%;
+  height: auto;
+  margin: 10px;
+}
+.crystals {
+  display: flex;
+}
+
+.col {
+  flex: 25%;
+  padding: 5px;
+}
